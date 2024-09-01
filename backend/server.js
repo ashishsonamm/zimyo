@@ -3,16 +3,10 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const express = require('express');
-// const mysql = require('mysql2');
 const cors = require('cors');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const rateLimit = require('express-rate-limit');
-// const securityHeaders = require('./middleware');
-// const bcrypt = require('bcrypt');
-// const jwt = require('jsonwebtoken');
-// const multer = require('multer');
-// const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -49,35 +43,6 @@ app.use(limiter)
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// Database connection
-// const db = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'art_user',
-//   password: 'sonam',
-//   database: 'art_marketplace'
-// });
-
-// db.connect((err) => {
-//   if (err) {
-//     console.error('Error connecting to database:', err);
-//     return;
-//   }
-//   console.log('Connected to MySQL database');
-// });
-
-// File upload configuration
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, 'uploads/');
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, Date.now() + path.extname(file.originalname));
-//   }
-// });
-
-// const upload = multer({ storage: storage });
-// const upload = multer({dest: 'uploads/'});
 
 // Routes
 const authRoutes = require('./routes/auth');
